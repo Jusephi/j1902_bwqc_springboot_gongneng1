@@ -21,7 +21,7 @@ public class PingPaiController {
     @RequestMapping(value="/pingpai",method = RequestMethod.POST)
     @ResponseBody
     public Object fetchPingPais(@RequestParam(value="page",defaultValue = "1") Integer page,
-                             @RequestParam(value="rows",defaultValue = "5") Integer pageSize,
+                             @RequestParam(value="rows",defaultValue = "10") Integer pageSize,
                              @RequestParam(value="pingpai",defaultValue="") String pingpai
     ){
         EasyuiDataGridResult pingpais = pingPaiService.findPingpai(page,pageSize,pingpai);

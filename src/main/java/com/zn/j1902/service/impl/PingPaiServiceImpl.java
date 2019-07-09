@@ -19,6 +19,7 @@ import java.util.List;
  */
 @Service
 public class PingPaiServiceImpl implements PingPaiService {
+
     @Autowired
     private ChexingkuguanliMapper chexingkuguanliMapper;
     @Override
@@ -50,12 +51,16 @@ public class PingPaiServiceImpl implements PingPaiService {
         dataGridResult.setTotal(total);
         return dataGridResult;
     }
-   /* @Override
-    public EasyuiDataGridResult updatePingpai(Long id, String pingpai, String changshang, String chexi, String leixing, String chexing, String niankuan, Byte status, Date created) {
-        EasyuiDataGridResult dataGridResult=new EasyuiDataGridResult();
-        ChexingkuguanliExample example=new ChexingkuguanliExample();
+    @Override
+    public void updatePingpai(Long id, String pingpai, String changshang, String chexi, String leixing, String chexing, String niankuan, Byte status, Date created) {
 
-        chexingkuguanliMapper.updateByExample(example);
-        return null;
-    }*/
+
+        chexingkuguanliMapper.updatePingpai(id,pingpai,changshang,chexi,leixing,chexing,niankuan,status,created);
+
+    }
+
+    @Override
+    public void deletePingPaiById(long id) {
+        chexingkuguanliMapper.deletePingPaiById(id);
+    }
 }

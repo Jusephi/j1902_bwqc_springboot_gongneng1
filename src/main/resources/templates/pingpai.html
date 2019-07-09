@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Title</title>
+</head>
+<body>
+<h2>商品列表</h2>
+<table id="dg" class="easyui-datagrid"
+       data-options="url:'pingpai',toolbar:'#tb',fitColumns:true,singleSelect:false,pagination:true">
+  <thead>
+  <tr>
+    <th data-options="field:'ch',checkbox:true,width:100"></th>
+    <th data-options="field:'id',width:50,align:'center'">id</th>
+    <th data-options="field:'pingpai',width:100,align:'center'">品牌</th>
+    <th data-options="field:'logo',width:100,align:'center',formatter:formatGetImage">logo</th>
+    <th data-options="field:'changshang',width:100,align:'center'">厂商</th>
+    <th data-options="field:'chexi',width:100,align:'center'">车系</th>
+    <th data-options="field:'leixing',width:100,align:'center'">类型</th>
+    <th data-options="field:'chexing',width:100,align:'center'">车型</th>
+    <th data-options="field:'niankuan',width:100,align:'center'">年款</th>
+    <th data-options="field:'status',width:100,align:'center',formatter:formatStatus">状态</th>
+    <th data-options="field:'created',width:100,align:'center',formatter:formatCreateTime">创建时间</th>
+    <th data-options="field:'operate',width:'100',align:'center',formatter:operate_formatter">操作</th>
+  </tr>
+  </thead>
+</table>
+<div id="tb">
+  标题：<input name="pingpai" type="text"/>
+  <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true,onClick:query" ></a>
+  <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true,onClick:addItem"></a>
+
+</div>
+<div id="win" class="easyui-window" title="品牌编辑" style="width:600px;height:400px"
+     data-options="iconCls:'icon-save',modal:true,closed:true">
+  <div class="easyui-layout" data-options="fit:true">
+    <div data-options="region:'center'">
+      <form id="for1" action="/pingpaibianji" method="post" >
+        <div>
+          <label>id</label>
+          <input type="text" name="id"/>
+        </div>
+        <div>
+          <label>品牌</label>
+          <input type="text" name="pingpai" />
+        </div>
+        <div>
+        <label>logo</label>
+        <input type="text" name="logo" />
+      </div>
+        <div>
+        <label>厂商</label>
+        <input type="text" name="changshang" />
+      </div>
+        <div>
+        <label>车系</label>
+        <input type="text" name="chexi" />
+      </div>
+        <div>
+          <label>类型</label>
+          <input type="text" name="leixing" />
+        </div>
+        <div>
+          <label>车型</label>
+          <input type="text" name="chexing" />
+        </div>
+        <div>
+          <label>年款</label>
+          <input type="text" name="niankuan"  />
+        </div>
+        <div>
+          <label>状态</label>
+          <input type="text" name="status" />
+        </div>
+        <div>
+          <label>创建时间</label>
+          <input type="text" name="created" />
+        </div>
+          <input type="submit" value="提交"/>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+  <script>
+      function operate_formatter(value, row, index) {
+
+          return "<button type='button' onclick='xianshi()'>编辑</button>/\
+          <button type='button' onclick='shanchu()'>删除</button>/\
+          "
+
+      }
+      function xianshi(index){
+
+          $('#dg').datagrid('selectRow',index);
+          var row = $('#dg').datagrid('getSelected');
+          if (row){
+              $('#win').window('open');
+              $('#for1').form('load',row);
+
+          }
+
+
+      }
+      function formatGetImage(v,r,i) {
+
+          var images = "/images/"+v;
+          console.log(images);
+          if (v){
+              return "<img src='"+images+"' style='width: 110px;height: 70px ;'/>";
+          }else {
+              return null;
+          }
+      }
+
+      function addItem() {
+          alert("天镁");
+          $(".tree-title:contains('添加商品')").parent().click();//触发树形节点的click事件
+      }
+      function query() {
+          $('#dg').datagrid('load',{
+              pingpai:$("[name='pingpai']").val()
+          });
+      }
+      function formatStatus(v,r,i) {
+        /*console.log('v:'+v);
+         console.log('r:'+r);
+         console.log('i:'+i);*/
+          if(v==1){
+              return "正常";
+          }else if(v==2){
+              return "下架";
+          }else {
+              return "已删除";
+          }
+      }
+
+      function formatCreateTime(v,r,i){
+          var d=new Date(v);
+          var year=d.getFullYear();
+          var month=d.getMonth()+1;
+          var date=d.getDate();
+          return year+"年"+month+"月"+date+"日";
+      }
+
+  </script>
+</div>
+</body>
+</html>

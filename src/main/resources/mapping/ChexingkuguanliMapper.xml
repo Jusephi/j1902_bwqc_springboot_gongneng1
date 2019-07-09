@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zn.j1902.mapper.ChexingkuguanliMapper" >
+  <resultMap id="BaseResultMap" type="com.zn.j1902.pojo.Chexingkuguanli" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="pingpai" property="pingpai" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="changshang" property="changshang" jdbcType="VARCHAR" />
+    <result column="chexi" property="chexi" jdbcType="VARCHAR" />
+    <result column="leixing" property="leixing" jdbcType="VARCHAR" />
+    <result column="chexing" property="chexing" jdbcType="VARCHAR" />
+    <result column="niankuan" property="niankuan" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="canshumingchen" property="canshumingchen" jdbcType="VARCHAR" />
+    <result column="canshuleibie" property="canshuleibie" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pingpai, logo, created, changshang, chexi, leixing, chexing, niankuan, status, 
+    canshumingchen, canshuleibie
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zn.j1902.pojo.ChexingkuguanliExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from chexingkuguanli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from chexingkuguanli
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from chexingkuguanli
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zn.j1902.pojo.ChexingkuguanliExample" >
+    delete from chexingkuguanli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zn.j1902.pojo.Chexingkuguanli" >
+    insert into chexingkuguanli (id, pingpai, logo, 
+      created, changshang, chexi, 
+      leixing, chexing, niankuan, 
+      status, canshumingchen, canshuleibie
+      )
+    values (#{id,jdbcType=BIGINT}, #{pingpai,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{changshang,jdbcType=VARCHAR}, #{chexi,jdbcType=VARCHAR}, 
+      #{leixing,jdbcType=VARCHAR}, #{chexing,jdbcType=VARCHAR}, #{niankuan,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{canshumingchen,jdbcType=VARCHAR}, #{canshuleibie,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zn.j1902.pojo.Chexingkuguanli" >
+    insert into chexingkuguanli
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pingpai != null" >
+        pingpai,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="changshang != null" >
+        changshang,
+      </if>
+      <if test="chexi != null" >
+        chexi,
+      </if>
+      <if test="leixing != null" >
+        leixing,
+      </if>
+      <if test="chexing != null" >
+        chexing,
+      </if>
+      <if test="niankuan != null" >
+        niankuan,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="canshumingchen != null" >
+        canshumingchen,
+      </if>
+      <if test="canshuleibie != null" >
+        canshuleibie,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pingpai != null" >
+        #{pingpai,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changshang != null" >
+        #{changshang,jdbcType=VARCHAR},
+      </if>
+      <if test="chexi != null" >
+        #{chexi,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null" >
+        #{leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="chexing != null" >
+        #{chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="niankuan != null" >
+        #{niankuan,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="canshumingchen != null" >
+        #{canshumingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="canshuleibie != null" >
+        #{canshuleibie,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zn.j1902.pojo.ChexingkuguanliExample" resultType="java.lang.Integer" >
+    select count(*) from chexingkuguanli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update chexingkuguanli
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.pingpai != null" >
+        pingpai = #{record.pingpai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null" >
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.changshang != null" >
+        changshang = #{record.changshang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chexi != null" >
+        chexi = #{record.chexi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leixing != null" >
+        leixing = #{record.leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chexing != null" >
+        chexing = #{record.chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.niankuan != null" >
+        niankuan = #{record.niankuan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.canshumingchen != null" >
+        canshumingchen = #{record.canshumingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.canshuleibie != null" >
+        canshuleibie = #{record.canshuleibie,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update chexingkuguanli
+    set id = #{record.id,jdbcType=BIGINT},
+      pingpai = #{record.pingpai,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      changshang = #{record.changshang,jdbcType=VARCHAR},
+      chexi = #{record.chexi,jdbcType=VARCHAR},
+      leixing = #{record.leixing,jdbcType=VARCHAR},
+      chexing = #{record.chexing,jdbcType=VARCHAR},
+      niankuan = #{record.niankuan,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=TINYINT},
+      canshumingchen = #{record.canshumingchen,jdbcType=VARCHAR},
+      canshuleibie = #{record.canshuleibie,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zn.j1902.pojo.Chexingkuguanli" >
+    update chexingkuguanli
+    <set >
+      <if test="pingpai != null" >
+        pingpai = #{pingpai,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changshang != null" >
+        changshang = #{changshang,jdbcType=VARCHAR},
+      </if>
+      <if test="chexi != null" >
+        chexi = #{chexi,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null" >
+        leixing = #{leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="chexing != null" >
+        chexing = #{chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="niankuan != null" >
+        niankuan = #{niankuan,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="canshumingchen != null" >
+        canshumingchen = #{canshumingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="canshuleibie != null" >
+        canshuleibie = #{canshuleibie,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zn.j1902.pojo.Chexingkuguanli" >
+    update chexingkuguanli
+    set pingpai = #{pingpai,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      changshang = #{changshang,jdbcType=VARCHAR},
+      chexi = #{chexi,jdbcType=VARCHAR},
+      leixing = #{leixing,jdbcType=VARCHAR},
+      chexing = #{chexing,jdbcType=VARCHAR},
+      niankuan = #{niankuan,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      canshumingchen = #{canshumingchen,jdbcType=VARCHAR},
+      canshuleibie = #{canshuleibie,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

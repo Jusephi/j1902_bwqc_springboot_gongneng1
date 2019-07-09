@@ -1,0 +1,21 @@
+server:
+  port: 9091
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bwqc2?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+#mybatis  config
+mybatis:
+#mybatis映射资源文件地址
+  mapper-locations: classpath:mapping/*.xml
+#别名
+  type-aliases-package: com.zn.j1902.pojo
+  #分页插件config
+pagehelper:
+#设置数据库方言
+  helper-dialect: mysql
+  support-methods-arguments: true
+  reasonable: true

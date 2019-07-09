@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <!--引入easyui样式-->
+    <link rel="stylesheet" href="js/jquery-easyui-1.5/themes/bootstrap/easyui.css"></link>
+    <!--引入easyui样式-->
+    <link rel="stylesheet" href="js/jquery-easyui-1.5/themes/icon.css"></link>
+    <!--引入自定义样式-->
+    <link rel="stylesheet" href="css/my.css"></link>
+</head>
+<body class="easyui-layout">
+    <!--<h2>电商平台</h2>-->
+<!--    <div>
+        <div id="calendar1" class="easyui-calendar"></div>
+        <div id="calendar2" ></div>
+    </div>-->
+    <div data-options="region:'north',split:false" style="height:60px;"><h2 align="center">伴我汽车管理平台</h2></div>
+    <div data-options="region:'south',split:true" style="height:10px;"></div>
+    <div data-options="region:'west',title:'功能区',split:true" style="width:260px;">
+        <div id="aa" class="easyui-accordion" data-options="fit:true">
+            <div title="会员管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>会员管理</span></li>
+                </ul>
+            </div>
+            <div title="咨询管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt1" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>草稿箱</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>资讯审核</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>咨询发布</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>咨询列表</span></li>
+                </ul>
+            </div>
+            <div title="标签定义" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt2" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>标签定义</span></li>
+                </ul>
+            </div>
+            <div title="车型库管理" data-options="iconCls:'icon-man',selected:true" style="overflow:auto;padding:10px;">
+                <ul id="tt3" class="easyui-tree">
+                    <li data-options="attributes:{'url':'pingpai'}"><span>品牌管理</span></li>
+                    <li data-options="attributes:{'url':'changshang'}"><span>厂商管理</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>车系管理</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>车款管理</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>参数分类管理</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>参数管理</span></li>
+                </ul>
+            </div>
+            <div title="自有商品管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt4" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>自有商品管理</span></li>
+                </ul>
+            </div>
+            <div title="活动管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt5" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>活动列表</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>推荐活动</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>类型管理</span></li>
+                    <li data-options="attributes:{'url':'item_add'}"><span>渠道管理</span></li>
+                </ul>
+            </div>
+            <div title="消息管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt6" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>消息管理</span></li>
+                </ul>
+            </div>
+            <div title="标签管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt7" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>标签管理</span></li>
+                </ul>
+            </div>
+            <div title="角色管理" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt8" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>角色管理</span></li>
+                </ul>
+            </div>
+            <div title="管理员列表" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt9" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>管理员列表</span></li>
+                </ul>
+            </div>
+            <div title="操作日志" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt10" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>操作日志</span></li>
+                </ul>
+            </div>
+            <div title="个人中心" data-options="iconCls:'icon-man'" style="overflow:auto;padding:10px;">
+                <ul id="tt11" class="easyui-tree">
+                    <li data-options="attributes:{'url':'item_add'}"><span>个人中心</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="padding:5px;background: #eee;">
+        <div id="tabs" class="easyui-tabs" data-options="fit:true">
+        <div title="欢迎页" style="padding:20px;display:none;">
+            <h2>欢迎进入我的电商系统</h2>
+        </div>
+        </div>
+    </div>
+    <!--**************************引入所依赖的js库*************************************-->
+    <!--引入jquery类库-->
+    <script src="js/jquery-easyui-1.5/jquery.min.js"></script>
+    <!--引入easyui类库-->
+    <script src="js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <!--引入easyui使用字符集-->
+    <script src="js/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <!--引入moment插件-->
+    <script src="js/moment/moment.min.js"></script>
+    <script src="js/moment/moment-with-locales.js"></script>
+    <!--引入自定义js库-->
+    <script src="js/mycomm.js"></script>
+    <script>
+        /*$("#calendar2").calendar();*/
+        $('#tt3').tree({/*alert(node.text);//用户点击的时候提示*/
+            onClick:function(node){
+
+                console.log(node);
+                var tab=$('#tabs').tabs('getTab',node.text);
+                if(tab){//选项卡已存在，让其选定
+                    $('#tabs').tabs('select',node.text);//执行tabs组件的select方法指定标题的选项卡
+                }else{//选项卡不存在。则创建
+                    //添加一个未选中状态的选项卡面板
+                    $('#tabs').tabs('add',{
+                        title:node.text,//设置title
+                        selected:true,//获得焦点
+                        closable:true,//可关闭
+                        href: node.attributes.url//树形节点的自定义资源地址设定为选项请求的资源地址
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

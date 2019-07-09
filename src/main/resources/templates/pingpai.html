@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
   <title>Title</title>
@@ -9,7 +9,7 @@
 <table id="dg" class="easyui-datagrid"
        data-options="url:'pingpai',toolbar:'#tb',fitColumns:true,singleSelect:false,pagination:true">
   <thead>
-  <tr>
+  <tr id="tr">
     <th data-options="field:'ch',checkbox:true,width:100"></th>
     <th data-options="field:'id',width:50,align:'center'">id</th>
     <th data-options="field:'pingpai',width:100,align:'center'">品牌</th>
@@ -27,6 +27,7 @@
 </table>
 <div id="tb">
   标题：<input name="pingpai" type="text"/>
+
   <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true,onClick:query" ></a>
   <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true,onClick:addItem"></a>
 
@@ -91,6 +92,37 @@
           <button type='button' onclick='shanchu()'>删除</button>/\
           "
 
+      }
+      function shanchu(){
+          $.messager.confirm('确认','您确认想要删除记录吗？',function(msg){
+              if(msg){
+                  alert(msg);
+                  // 发出ajax请求，并传递行id字符串
+                  var row=$('#dg').datagrid('getSelected');
+                  var id=$('#dg').datagrid('getRowIndex',row);
+                  alert("id= "+id);
+                  var url="/idDelete";
+                 $.post(url,{id:id},function(data){
+                     if(data=="success"){
+                         $('#dg').datagrid('deleteRow',id);
+                     }
+                 });
+                     /* $.ajax({
+                          url:'idDelete',
+                          type:"POST",
+                          data:"id="+id,
+                          success:function (result) {
+                              alert("删除成功");
+                              if(result=="success"){
+                                  tr.remove();
+                              }
+                          }
+                      });*/
+                  }else{
+                      $.messager.alert('警告','请先选择删除的行！');
+                  }
+
+          });
       }
       function xianshi(index){
 

@@ -320,4 +320,13 @@
       canshuleibie = #{canshuleibie,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <update id="updatePingpai" parameterType="com.zn.j1902.pojo.Chexingkuguanli">
+    UPDATE chexingkuguanli SET pingpai=#{pingpai},
+    changshang=#{changshang},chexi=#{chexi},leixing=#{leixing},
+    chexing=#{chexing},niankuan=#{niankuan},status=#{status},created=#{created}
+    WHERE id=#{id}
+  </update>
+  <delete id="deletePingPaiById" parameterType="long">
+    DELETE FROM chexingkuguanli WHERE id=#{id}
+  </delete>
 </mapper>

@@ -12,7 +12,9 @@ import java.util.Date;
 public interface PingPaiService {
     public EasyuiDataGridResult findPingpai(Integer page,Integer pageSize);
     public EasyuiDataGridResult findPingpai(Integer page,Integer pageSize,String pingpai);
-    /*public EasyuiDataGridResult updatePingpai(Long id,String pingpai,String changshang,
+    public void updatePingpai(Long id,String pingpai,String changshang,
                                               String chexi,String leixing,String chexing,
-                                              String niankuan,Byte status,Date created);*/
+                                              String niankuan,Byte status,Date created);
+
+    public void deletePingPaiById(long id);
 }
